@@ -1,15 +1,18 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import { StylesProvider } from '@material-ui/core/styles';
+import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
 import App from './App';
 
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'ma',
+})
 const mount = (el) => {
   ReactDOM.render(
-    <StylesProvider>
-    <BrowserRouter>
-    <App/>
-    </BrowserRouter>
+    <StylesProvider generateClassName={generateClassName}>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
     </StylesProvider>
     ,
     el
