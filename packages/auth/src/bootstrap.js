@@ -8,7 +8,7 @@ import App from './App';
 const generateClassName = createGenerateClassName({
   productionPrefix: 'au',
 })
-const mount = (el, {onNavigate, defaultHistory, initialPath}) => {
+const mount = (el, {onNavigate, defaultHistory, initialPath, onSignIn}) => {
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   })
@@ -20,7 +20,7 @@ const mount = (el, {onNavigate, defaultHistory, initialPath}) => {
   ReactDOM.render(
     <StylesProvider generateClassName={generateClassName}>
       <Router history={history} >
-        <App />
+        <App onSignIn={onSignIn} />
       </Router>
     </StylesProvider>
     ,
